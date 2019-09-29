@@ -1,0 +1,16 @@
+.header-wrapper {
+  display: flex;
+  padding: 15px 10px;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: #eee;
+
+  button {
+    display: block;
+  }
+}
+
+:host {
+  width: 100%;
+  height: 70px;
+}

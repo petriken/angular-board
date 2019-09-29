@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100px;
+
+  button,
+  form {
+    margin: 0 20px;
+  }
+}
