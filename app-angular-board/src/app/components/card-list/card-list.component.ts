@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { CardItemComponent } from "../card-item/card-item.component";
 import CardList from "src/app/models/CardList";
 import Card from "src/app/models/Card";
 
@@ -11,8 +10,10 @@ import Card from "src/app/models/Card";
 export class CardListComponent {
   @Input() items: Card[];
   @Input() card: CardList;
+  @Input() isDone: boolean;
   @Output() public remove = new EventEmitter<any>();
   @Output() public expand = new EventEmitter<any>();
+  @Input() public searchCriterion: string;
 
   expandItem(item: Card) {
     this.expand.emit({

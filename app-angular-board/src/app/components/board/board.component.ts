@@ -1,11 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "app-board",
   templateUrl: "./board.component.html",
   styleUrls: ["./board.component.scss"]
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
+  @Input() public searchCriterion: string;
   cardList = [
     {
       id: 1,
@@ -92,14 +93,8 @@ export class BoardComponent implements OnInit {
     const cardIndex = this.cardList.findIndex(
       currentList => currentList.cards === list
     );
-    console.log(this.cardList[cardIndex].cards[itemIndex].isClicked);
-
     this.cardList[cardIndex].cards[itemIndex].isClicked = !this.cardList[
       cardIndex
     ].cards[itemIndex].isClicked;
   }
-
-  constructor() {}
-
-  ngOnInit() {}
 }

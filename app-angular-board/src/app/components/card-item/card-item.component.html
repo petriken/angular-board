@@ -1,5 +1,5 @@
 <mat-card (click)="handleClick()">
-  <div>
+  <div [ngClass]="{ isDone: isDone }">
     <p>{{ item.name }}</p>
     <ng-container *ngIf = "item.isClicked">
       <p>{{ item.description }}</p>

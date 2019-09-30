@@ -4,8 +4,10 @@
     *ngFor="let card of cardList"
     [items]="card.cards"
     [card]="card"
+    [isDone]="card.isDoneSection"
     (remove)="removeItem($event)"
     (expand)="expandItem($event)"
+    [searchCriterion]="searchCriterion"
   >
   </app-card-list>
 </ng-container>

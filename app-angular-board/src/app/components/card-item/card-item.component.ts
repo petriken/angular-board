@@ -8,6 +8,9 @@ import Card from "src/app/models/Card";
 })
 export class CardItemComponent {
   @Input() public item: Card;
+  @Input() public isDone: boolean;
+  @Input() public searchCriterion: string;
+
   @Output() public remove = new EventEmitter<Card>();
   @Output() public expand = new EventEmitter<Card>();
 

@@ -1,6 +1,11 @@
 <form>
   <mat-form-field>
-    <input matInput name="searchText" placeholder="Search" />
+    <input
+      matInput
+      [(ngModel)]="searchCriterion"
+      placeholder="Search"
+      [ngModelOptions]="{ standalone: true }"
+    />
   </mat-form-field>
-  <button mat-raised-button>Search</button>
+  <button mat-raised-button (click)="onSearch()">Search</button>
 </form>
