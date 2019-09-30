@@ -6,4 +6,5 @@ export default interface Card {
   description: string;
   dueDate?: Date | string;
   assignee?: User;
+  isClicked: boolean;
 }

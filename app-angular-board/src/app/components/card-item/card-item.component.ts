@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from "@angular/core";
+import Card from "src/app/models/Card";
 
 @Component({
-  selector: 'app-card-item',
-  templateUrl: './card-item.component.html',
-  styleUrls: ['./card-item.component.scss']
+  selector: "app-card-item",
+  templateUrl: "./card-item.component.html",
+  styleUrls: ["./card-item.component.scss"]
 })
-export class CardItemComponent implements OnInit {
+export class CardItemComponent {
+  @Input() public item: Card;
 
-  constructor() { }
+  public dueDate = new Date().toISOString();
 
-  ngOnInit() {
+  public handleClick(event: MouseEvent) {
+    this.item.isClicked = !this.item.isClicked;
   }
-
 }

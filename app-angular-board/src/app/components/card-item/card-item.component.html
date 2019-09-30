@@ -1,3 +1,11 @@
-<p>I am card-item!</p>
-<p>I have info #1</p>
-<p>I have info #2</p>
+
+  <mat-card (click)="handleClick($event)">
+    <p>{{ item.name }}</p>
+    <ng-container *ngIf="item.isClicked">
+      <p>{{ item.description }}</p>
+      <p>{{ dueDate | date:'medium' }}</p>
+      <!-- <p>{{ item.assignee }}</p> -->
+
+    </ng-container>
+  </mat-card>
+

@@ -1,11 +1,9 @@
-<mat-card>Simple card
-    <app-card-item></app-card-item>
+<mat-card>
+    <mat-card-title>{{ card.name }}</mat-card-title>
+    <app-card-item *ngFor="let item of items" [item]="item"></app-card-item>
+    <button mat-button>+ Create card</button>
 </mat-card>
-<mat-card>Simple card
-    <app-card-item></app-card-item>
-</mat-card>
-<mat-card>Simple card
-    <app-card-item></app-card-item>
-</mat-card>
+
+
 
 
