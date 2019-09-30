@@ -1,6 +1,10 @@
 :host {
-  margin: 0 5px;
+  margin: 0 0.5rem;
   padding: 0;
+
+  p {
+    margin: 0.5rem 0;
+  }
 }
 
 .isDone {

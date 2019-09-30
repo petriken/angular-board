@@ -1,14 +1,14 @@
 <mat-card (click)="handleClick()">
   <div [ngClass]="{ isDone: isDone }">
     <p>{{ item.name }}</p>
-    <ng-container *ngIf = "item.isClicked">
+    <ng-container *ngIf="item.isClicked">
       <p>{{ item.description }}</p>
       <p>{{ dueDate | date: "medium" }}</p>
       <!-- <p>{{ item.assignee }}</p> -->
     </ng-container>
   </div>
   <div
-    [ngStyle]="{ display: 'flex', 'justify-content': 'space-between' }"
+    [ngStyle]="{ display:'flex', 'justify-content':'space-between', 'margin-top':'1rem' }"
     *ngIf="item.isClicked"
   >
     <button mat-raised-button>Edit</button>
