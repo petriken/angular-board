@@ -9,11 +9,22 @@ import Card from "src/app/models/Card";
   styleUrls: ["./card-list.component.scss"]
 })
 export class CardListComponent {
-  @Input() items: CardList[];
-  @Input() card: Card;
-  // @Input() searchCriterion: string
-  // @Input() item: Card;
-  // public  cardList: CardList[];
+  @Input() items: Card[];
+  @Input() card: CardList;
+  @Output() public remove = new EventEmitter<any>();
+  @Output() public expand = new EventEmitter<any>();
 
-  handleClick(event: MouseEvent) {}
+  expandItem(item: Card) {
+    this.expand.emit({
+      list: this.items,
+      item
+    });
+  }
+
+  onRemove(item: Card) {
+    this.remove.emit({
+      list: this.items,
+      item
+    });
+  }
 }

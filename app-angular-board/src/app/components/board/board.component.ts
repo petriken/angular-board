@@ -34,17 +34,17 @@ export class BoardComponent implements OnInit {
       name: "In progress",
       cards: [
         {
-          name: "Task 1",
+          name: "Task 4",
           description: "buy milk",
           isClicked: false
         },
         {
-          name: "Task 2",
+          name: "Task 5",
           description: "buy bread",
           isClicked: false
         },
         {
-          name: "Task 3",
+          name: "Task 6",
           description: "buy meat",
           isClicked: false
         }
@@ -56,17 +56,17 @@ export class BoardComponent implements OnInit {
       name: "Done",
       cards: [
         {
-          name: "Task 1",
+          name: "Task 7",
           description: "buy milk",
           isClicked: false
         },
         {
-          name: "Task 2",
+          name: "Task 8",
           description: "buy bread",
           isClicked: false
         },
         {
-          name: "Task 3",
+          name: "Task 9",
           description: "buy meat",
           isClicked: false
         }
@@ -74,6 +74,31 @@ export class BoardComponent implements OnInit {
       isDoneSection: true
     }
   ];
+
+  public removeItem({ list, item }) {
+    const itemIndex = list.findIndex(
+      currentItem => currentItem.name === item.name
+    );
+    const cardIndex = this.cardList.findIndex(
+      currentList => currentList.cards === list
+    );
+    this.cardList[cardIndex].cards.splice(itemIndex, 1);
+  }
+
+  public expandItem({ list, item }) {
+    const itemIndex = list.findIndex(
+      currentItem => currentItem.name === item.name
+    );
+    const cardIndex = this.cardList.findIndex(
+      currentList => currentList.cards === list
+    );
+    console.log(this.cardList[cardIndex].cards[itemIndex].isClicked);
+
+    this.cardList[cardIndex].cards[itemIndex].isClicked = !this.cardList[
+      cardIndex
+    ].cards[itemIndex].isClicked;
+  }
+
   constructor() {}
 
   ngOnInit() {}

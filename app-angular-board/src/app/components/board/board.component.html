@@ -1,4 +1,11 @@
 <ng-container class="card-list__wrapper">
-
-<app-card-list class="card" *ngFor="let card of cardList" [items]="card.cards" [card]="card"></app-card-list>
+  <app-card-list
+    class="card"
+    *ngFor="let card of cardList"
+    [items]="card.cards"
+    [card]="card"
+    (remove)="removeItem($event)"
+    (expand)="expandItem($event)"
+  >
+  </app-card-list>
 </ng-container>

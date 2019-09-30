@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import Card from "src/app/models/Card";
 
 @Component({
@@ -8,10 +8,16 @@ import Card from "src/app/models/Card";
 })
 export class CardItemComponent {
   @Input() public item: Card;
+  @Output() public remove = new EventEmitter<Card>();
+  @Output() public expand = new EventEmitter<Card>();
 
   public dueDate = new Date().toISOString();
 
-  public handleClick(event: MouseEvent) {
-    this.item.isClicked = !this.item.isClicked;
+  public handleClick() {
+    this.expand.emit(this.item);
+  }
+
+  public onRemove() {
+    this.remove.emit(this.item);
   }
 }
