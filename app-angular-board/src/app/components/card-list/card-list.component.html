@@ -4,6 +4,7 @@
     *ngFor="let item of items | filter:searchCriterion"
     [item]="item"
     [isDone]="isDone"
+    [dueDate]="item.dueDate"
     (remove)="onRemove($event)"
     (expand)="expandItem($event)"
     [searchCriterion]="searchCriterion"

@@ -16,6 +16,7 @@ import { FormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from "@angular/material/card";
 import { FilterPipe } from './pipes/filter.pipe';
+import { HighlightDirective } from './directive/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     CardListComponent,
     CardItemComponent,
     FooterComponent,
-    FilterPipe
+    FilterPipe,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

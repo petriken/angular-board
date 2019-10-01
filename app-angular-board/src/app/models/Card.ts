@@ -4,7 +4,7 @@ export default interface Card {
   id: string;
   name: string;
   description: string;
-  dueDate?: Date | string;
-  assignee?: User;
+  dueDate: Date | string;
+  assignee: User;
   isClicked: boolean;
 }

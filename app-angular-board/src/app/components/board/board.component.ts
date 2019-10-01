@@ -15,17 +15,20 @@ export class BoardComponent {
         {
           name: "Task 1",
           description: "buy milk",
-          isClicked: true
+          isClicked: true,
+          dueDate: new Date("October 3, 2019 03:24:00").getTime()
         },
         {
           name: "Task 2",
           description: "buy bread",
-          isClicked: false
+          isClicked: false,
+          dueDate: new Date("October 7, 2019 03:24:00").getTime()
         },
         {
           name: "Task 3",
           description: "buy meat",
-          isClicked: false
+          isClicked: false,
+          dueDate: new Date("October 6, 2019 03:24:00").getTime()
         }
       ],
       isDoneSection: false
@@ -37,17 +40,20 @@ export class BoardComponent {
         {
           name: "Task 4",
           description: "buy milk",
-          isClicked: false
+          isClicked: false,
+          dueDate: new Date("October 8, 2019 03:24:00").getTime()
         },
         {
           name: "Task 5",
           description: "buy bread",
-          isClicked: false
+          isClicked: false,
+          dueDate: new Date("October 15, 2019 03:24:00").getTime()
         },
         {
           name: "Task 6",
           description: "buy meat",
-          isClicked: false
+          isClicked: false,
+          dueDate: new Date("October 4, 2019 03:24:00").getTime()
         }
       ],
       isDoneSection: false
@@ -59,17 +65,20 @@ export class BoardComponent {
         {
           name: "Task 7",
           description: "buy milk",
-          isClicked: false
+          isClicked: false,
+          dueDate: new Date("December 28, 2019 03:24:00").getTime()
         },
         {
           name: "Task 8",
           description: "buy bread",
-          isClicked: false
+          isClicked: false,
+          dueDate: new Date("October 3, 2019 03:24:00").getTime()
         },
         {
           name: "Task 9",
           description: "buy meat",
-          isClicked: false
+          isClicked: false,
+          dueDate: new Date("October 6, 2019 03:24:00").getTime()
         }
       ],
       isDoneSection: true

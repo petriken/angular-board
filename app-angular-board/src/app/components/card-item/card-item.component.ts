@@ -10,11 +10,10 @@ export class CardItemComponent {
   @Input() public item: Card;
   @Input() public isDone: boolean;
   @Input() public searchCriterion: string;
+  @Input() public dueDate: string | Date;
 
   @Output() public remove = new EventEmitter<Card>();
   @Output() public expand = new EventEmitter<Card>();
-
-  public dueDate = new Date().toISOString();
 
   public handleClick() {
     this.expand.emit(this.item);
