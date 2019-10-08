@@ -22,4 +22,8 @@ export class CardItemComponent {
   public onRemove() {
     this.remove.emit(this.item);
   }
+
+  public onEdit(event: MouseEvent) {
+    event.stopPropagation();
+  }
 }

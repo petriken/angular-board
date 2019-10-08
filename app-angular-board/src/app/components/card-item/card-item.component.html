@@ -9,7 +9,7 @@
     <ng-container *ngIf="item.isClicked">
       <p>{{ item.description }}</p>
       <p>{{ item.dueDate | date: "medium" }}</p>
-      <!-- <p>{{ item.assignee }}</p> -->
+      <p>{{ item.assignee.firstName }} {{ item.assignee.lastName }}</p>
     </ng-container>
   </div>
   <div
@@ -20,7 +20,7 @@
     }"
     *ngIf="item.isClicked"
   >
-    <button mat-raised-button>Edit</button>
+    <button mat-raised-button (click)="onEdit($event)">Edit</button>
     <button mat-raised-button (click)="onRemove()">Remove</button>
   </div>
 </mat-card>

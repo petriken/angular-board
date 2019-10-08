@@ -16,19 +16,31 @@ export class BoardComponent {
           name: "Task 1",
           description: "buy milk",
           isClicked: true,
-          dueDate: new Date("October 3, 2019 03:24:00").getTime()
+          dueDate: new Date("October 3, 2019 03:24:00").getTime(),
+          assignee: {
+            firstName: "Viktor",
+            lastName: "Pupkin"
+          }
         },
         {
           name: "Task 2",
           description: "buy bread",
           isClicked: false,
-          dueDate: new Date("October 7, 2019 03:24:00").getTime()
+          dueDate: new Date("October 7, 2019 03:24:00").getTime(),
+          assignee: {
+            firstName: "Ivan",
+            lastName: "Zamyatin"
+          }
         },
         {
           name: "Task 3",
           description: "buy meat",
           isClicked: false,
-          dueDate: new Date("October 6, 2019 03:24:00").getTime()
+          dueDate: new Date("October 6, 2019 03:24:00").getTime(),
+          assignee: {
+            firstName: "Clare",
+            lastName: "Obignale"
+          }
         }
       ],
       isDoneSection: false
@@ -41,19 +53,31 @@ export class BoardComponent {
           name: "Task 4",
           description: "buy milk",
           isClicked: false,
-          dueDate: new Date("October 8, 2019 03:24:00").getTime()
+          dueDate: new Date("October 8, 2019 03:24:00").getTime(),
+          assignee: {
+            firstName: "John",
+            lastName: "Todessky"
+          }
         },
         {
           name: "Task 5",
           description: "buy bread",
           isClicked: false,
-          dueDate: new Date("October 15, 2019 03:24:00").getTime()
+          dueDate: new Date("October 15, 2019 03:24:00").getTime(),
+          assignee: {
+            firstName: "Liza",
+            lastName: "Richie"
+          }
         },
         {
           name: "Task 6",
           description: "buy meat",
           isClicked: false,
-          dueDate: new Date("October 4, 2019 03:24:00").getTime()
+          dueDate: new Date("October 4, 2019 03:24:00").getTime(),
+          assignee: {
+            firstName: "Franc",
+            lastName: "Polanski"
+          }
         }
       ],
       isDoneSection: false
@@ -66,19 +90,31 @@ export class BoardComponent {
           name: "Task 7",
           description: "buy milk",
           isClicked: false,
-          dueDate: new Date("December 28, 2019 03:24:00").getTime()
+          dueDate: new Date("December 28, 2019 03:24:00").getTime(),
+          assignee: {
+            firstName: "Kirk",
+            lastName: "Hammet"
+          }
         },
         {
           name: "Task 8",
           description: "buy bread",
           isClicked: false,
-          dueDate: new Date("October 3, 2019 03:24:00").getTime()
+          dueDate: new Date("October 3, 2019 03:24:00").getTime(),
+          assignee: {
+            firstName: "Bruce",
+            lastName: "Waine"
+          }
         },
         {
           name: "Task 9",
           description: "buy meat",
           isClicked: false,
-          dueDate: new Date("October 6, 2019 03:24:00").getTime()
+          dueDate: new Date("October 6, 2019 03:24:00").getTime(),
+          assignee: {
+            firstName: "John",
+            lastName: "Doe"
+          }
         }
       ],
       isDoneSection: true
