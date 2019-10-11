@@ -1,11 +1,11 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import CardList from "src/app/models/CardList";
-import Card from "src/app/models/Card";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import CardList from 'src/app/models/CardList';
+import Card from 'src/app/models/Card';
 
 @Component({
-  selector: "app-card-list",
-  templateUrl: "./card-list.component.html",
-  styleUrls: ["./card-list.component.scss"]
+  selector: 'app-card-list',
+  templateUrl: './card-list.component.html',
+  styleUrls: ['./card-list.component.scss']
 })
 export class CardListComponent {
   @Input() items: Card[];

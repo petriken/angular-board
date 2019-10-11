@@ -1,14 +1,20 @@
-import { Directive, ElementRef, Renderer2, Input } from "@angular/core";
+import {
+  Directive,
+  ElementRef,
+  Renderer2,
+  Input,
+  OnChanges
+} from '@angular/core';
 
 @Directive({
-  selector: "[appHighlight]"
+  selector: '[appHighlight]'
 })
-export class HighlightDirective {
+export class HighlightDirective implements OnChanges {
   @Input() isDone: boolean;
   @Input() dueDate: number;
   public currentDate: number = new Date().getTime();
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef) { }
 
   public ngOnChanges(): void {
     const dayDifference: number = Math.floor(
@@ -16,9 +22,9 @@ export class HighlightDirective {
     );
     if (!this.isDone) {
       if (dayDifference < 3) {
-        this.elementRef.nativeElement.style.background = "red";
+        this.elementRef.nativeElement.style.background = 'red';
       } else if (dayDifference < 7) {
-        this.elementRef.nativeElement.style.background = "yellow";
+        this.elementRef.nativeElement.style.background = 'yellow';
       }
     }
   }
