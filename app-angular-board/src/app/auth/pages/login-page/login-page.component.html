@@ -1,0 +1,22 @@
+<ng-container>
+  <form>
+    <mat-card [ngStyle]="{ display: 'flex', 'flex-direction': 'column' }">
+      <mat-form-field>
+        <label for="userName"></label>
+        <input type="text" matInput placeholder="username" name="userName" />
+      </mat-form-field>
+      <mat-form-field>
+        <label for="password"></label>
+        <input
+          matInput
+          type="password"
+          name="password"
+          placeholder="password"
+        />
+      </mat-form-field>
+      <button mat-raised-button>
+        Login
+      </button>
+    </mat-card>
+  </form>
+</ng-container>

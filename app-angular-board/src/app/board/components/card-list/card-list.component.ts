@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import CardList from 'src/app/models/CardList';
-import Card from 'src/app/models/Card';
+import CardList from 'src/app/board/models/CardList';
+import Card from 'src/app/board/models/Card';
 
 @Component({
   selector: 'app-card-list',

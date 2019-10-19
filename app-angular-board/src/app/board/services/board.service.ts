@@ -1,12 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class BoardComponent {
-  @Input() public searchCriterion: string;
+export class BoardService {
+
   cardList = [
     {
       id: 1,
@@ -18,6 +16,7 @@ export class BoardComponent {
           isClicked: true,
           dueDate: new Date('October 3, 2019 03:24:00').getTime(),
           assignee: {
+            id: 'vik',
             firstName: 'Viktor',
             lastName: 'Pupkin'
           }
@@ -26,8 +25,9 @@ export class BoardComponent {
           name: 'Task 2',
           description: 'buy bread',
           isClicked: false,
-          dueDate: new Date('October 7, 2019 03:24:00').getTime(),
+          dueDate: new Date('October 17, 2019 03:24:00').getTime(),
           assignee: {
+            id: 'zama',
             firstName: 'Ivan',
             lastName: 'Zamyatin'
           }
@@ -38,6 +38,7 @@ export class BoardComponent {
           isClicked: false,
           dueDate: new Date('October 6, 2019 03:24:00').getTime(),
           assignee: {
+            id: 'oba',
             firstName: 'Clare',
             lastName: 'Obignale'
           }
@@ -55,6 +56,7 @@ export class BoardComponent {
           isClicked: false,
           dueDate: new Date('October 8, 2019 03:24:00').getTime(),
           assignee: {
+            id: 'tod',
             firstName: 'John',
             lastName: 'Todessky'
           }
@@ -65,6 +67,7 @@ export class BoardComponent {
           isClicked: false,
           dueDate: new Date('October 15, 2019 03:24:00').getTime(),
           assignee: {
+            id: 'richa',
             firstName: 'Liza',
             lastName: 'Richie'
           }
@@ -75,6 +78,7 @@ export class BoardComponent {
           isClicked: false,
           dueDate: new Date('October 4, 2019 03:24:00').getTime(),
           assignee: {
+            id: 'pola',
             firstName: 'Franc',
             lastName: 'Polanski'
           }
@@ -92,6 +96,7 @@ export class BoardComponent {
           isClicked: false,
           dueDate: new Date('December 28, 2019 03:24:00').getTime(),
           assignee: {
+            id: 'ham',
             firstName: 'Kirk',
             lastName: 'Hammet'
           }
@@ -102,6 +107,7 @@ export class BoardComponent {
           isClicked: false,
           dueDate: new Date('October 3, 2019 03:24:00').getTime(),
           assignee: {
+            id: 'vana',
             firstName: 'Bruce',
             lastName: 'Waine'
           }
@@ -112,6 +118,7 @@ export class BoardComponent {
           isClicked: false,
           dueDate: new Date('October 6, 2019 03:24:00').getTime(),
           assignee: {
+            id: 'def',
             firstName: 'John',
             lastName: 'Doe'
           }
