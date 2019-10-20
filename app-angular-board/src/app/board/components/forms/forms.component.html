@@ -1,0 +1,65 @@
+<ng-container>
+  <form>
+    <mat-card>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Name"
+          value="{{ card.name }}"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Description"
+          value="{{ card.description }}"
+        />
+      </mat-form-field>
+      <mat-form-field *ngIf="assignee; else elseBlock">
+        <!-- <div > -->
+        <label>Assignee</label>
+        <mat-select>
+          <mat-option
+            *ngFor="let assignee of assignees"
+            [value]="assignee.lastName"
+            >{{ assignee.firstName }} {{ assignee.lastName }}
+          </mat-option>
+        </mat-select>
+        <!-- </div> -->
+      </mat-form-field>
+      <ng-template #elseBlock
+        ><mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="assignee"
+            value="{{ card.assignee.firstName }} {{ card.assignee.lastName }}"
+          /> </mat-form-field
+      ></ng-template>
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Choose a date"
+          value="bla-bla"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <!-- {{ card.dueDate }} -->
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div
+        [ngStyle]="{
+          display: 'flex',
+          'justify-content': 'space-between',
+          'margin-top': '1rem'
+        }"
+      >
+        <button mat-raised-button>Save</button>
+        <button mat-raised-button>Cancel</button>
+      </div>
+    </mat-card>
+  </form>
+</ng-container>

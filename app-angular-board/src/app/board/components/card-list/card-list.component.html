@@ -1,15 +1,16 @@
 <mat-card>
   <mat-card-title>{{ card.name }}</mat-card-title>
   <app-card-item
-    *ngFor="let item of items | filter:searchCriterion"
+    *ngFor="let item of items | filter: searchCriterion"
     [item]="item"
     [isDone]="isDone"
     [dueDate]="item.dueDate"
     (remove)="onRemove($event)"
     (expand)="expandItem($event)"
     [searchCriterion]="searchCriterion"
-
+    (edit)="onEdit($event)"
+    (create)="onCreateCard($event)"
   >
   </app-card-item>
-  <button mat-button>+ Create card</button>
+  <button mat-button (click)="onCreateCard()">+ Create card</button>
 </mat-card>

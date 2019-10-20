@@ -8,6 +8,8 @@
     (remove)="removeItem($event)"
     (expand)="expandItem($event)"
     [searchCriterion]="searchCriterion"
+    (edit)="onEdit($event)"
+    (create)="onCreateCard($event)"
   >
   </app-card-list>
 </ng-container>

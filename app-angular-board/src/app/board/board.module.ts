@@ -11,10 +11,17 @@ import { BoardPageComponent } from './pages/board-page/board-page.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 import { FilterPipe } from 'src/app/board/pipes/filter.pipe';
 import { HighlightDirective } from 'src/app/board/directive/highlight.directive';
+import { CreatePageComponent } from './pages/create-page/create-page.component';
+import { FormsComponent } from './components/forms/forms.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { EditPageComponent } from './pages/edit-page/edit-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +31,10 @@ import { HighlightDirective } from 'src/app/board/directive/highlight.directive'
     CardItemComponent,
     FilterPipe,
     HighlightDirective,
-    BoardPageComponent
+    BoardPageComponent,
+    CreatePageComponent,
+    FormsComponent,
+    EditPageComponent
   ],
   imports: [
     CommonModule,
@@ -32,8 +42,10 @@ import { HighlightDirective } from 'src/app/board/directive/highlight.directive'
     MatButtonModule,
     MatInputModule,
     FormsModule,
-    MatCardModule
-
+    MatCardModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     ToolbarComponent,

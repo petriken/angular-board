@@ -3,7 +3,13 @@
     <mat-card [ngStyle]="{ display: 'flex', 'flex-direction': 'column' }">
       <mat-form-field>
         <label for="userName"></label>
-        <input type="text" matInput placeholder="username" name="userName" />
+        <input
+          type="text"
+          matInput
+          placeholder="username"
+          [(ngModel)]="login"
+          [ngModelOptions]="{ standalone: true }"
+        />
       </mat-form-field>
       <mat-form-field>
         <label for="password"></label>
@@ -12,9 +18,10 @@
           type="password"
           name="password"
           placeholder="password"
+          [(ngModel)]="password"
         />
       </mat-form-field>
-      <button mat-raised-button>
+      <button mat-raised-button (click)="onLogin()">
         Login
       </button>
     </mat-card>

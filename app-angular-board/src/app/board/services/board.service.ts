@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import Card from '../models/Card';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoardService {
+  public today: Date = new Date();
+  public date: Date = new Date();
+  public item: Card;
 
   cardList = [
     {
@@ -14,7 +18,7 @@ export class BoardService {
           name: 'Task 1',
           description: 'buy milk',
           isClicked: true,
-          dueDate: new Date('October 3, 2019 03:24:00').getTime(),
+          dueDate: this.date.setDate(this.today.getDate() + 8),
           assignee: {
             id: 'vik',
             firstName: 'Viktor',
@@ -25,8 +29,7 @@ export class BoardService {
           name: 'Task 2',
           description: 'buy bread',
           isClicked: false,
-          dueDate: new Date('October 17, 2019 03:24:00').getTime(),
-          assignee: {
+          dueDate: this.date.setDate(this.today.getDate() + 4), assignee: {
             id: 'zama',
             firstName: 'Ivan',
             lastName: 'Zamyatin'
@@ -54,7 +57,7 @@ export class BoardService {
           name: 'Task 4',
           description: 'buy milk',
           isClicked: false,
-          dueDate: new Date('October 8, 2019 03:24:00').getTime(),
+          dueDate: this.date.setDate(this.today.getDate() + 7),
           assignee: {
             id: 'tod',
             firstName: 'John',
@@ -76,7 +79,7 @@ export class BoardService {
           name: 'Task 6',
           description: 'buy meat',
           isClicked: false,
-          dueDate: new Date('October 4, 2019 03:24:00').getTime(),
+          dueDate: this.date.setDate(this.today.getDate() + 10),
           assignee: {
             id: 'pola',
             firstName: 'Franc',
@@ -148,5 +151,16 @@ export class BoardService {
     this.cardList[cardIndex].cards[itemIndex].isClicked = !this.cardList[
       cardIndex
     ].cards[itemIndex].isClicked;
+  }
+
+  public getTaskByName(name: string) {
+    for (const card of this.cardList) {
+      for (const item of card.cards) {
+        if (item.name === name) {
+          console.log(item);
+          return item;
+        }
+      }
+    }
   }
 }

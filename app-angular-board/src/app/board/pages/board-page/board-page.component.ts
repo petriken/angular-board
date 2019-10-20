@@ -1,6 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import CardList from '../../models/CardList';
-import { BoardService } from '../../services/board.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-board-page',
