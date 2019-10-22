@@ -14,7 +14,6 @@ export class BoardComponent implements OnInit {
 
   @Input() public searchCriterion: string;
   public cardList: CardList[];
-  // public cardList: CardList;
 
   constructor(private boardService: BoardService, private router: Router, private route: ActivatedRoute) { }
 
@@ -31,14 +30,10 @@ export class BoardComponent implements OnInit {
   }
 
   public onEdit(item: Card) {
-    console.log(item);
-
     this.router.navigate(['edit-page', item.name], { relativeTo: this.route });
   }
 
   public onCreateCard() {
-    // console.log(card);
-
     this.router.navigate(['board-page', 'create-page']);
   }
 }

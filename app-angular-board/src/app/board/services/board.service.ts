@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Card from '../models/Card';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,8 @@ export class BoardService {
   public today: Date = new Date();
   public date: Date = new Date();
   public item: Card;
+
+  constructor(private router: Router) { }
 
   cardList = [
     {
@@ -18,7 +21,7 @@ export class BoardService {
           name: 'Task 1',
           description: 'buy milk',
           isClicked: true,
-          dueDate: this.date.setDate(this.today.getDate() + 8),
+          dueDate: this.dateStringToDate(8),
           assignee: {
             id: 'vik',
             firstName: 'Viktor',
@@ -29,7 +32,8 @@ export class BoardService {
           name: 'Task 2',
           description: 'buy bread',
           isClicked: false,
-          dueDate: this.date.setDate(this.today.getDate() + 4), assignee: {
+          dueDate: this.dateStringToDate(4),
+          assignee: {
             id: 'zama',
             firstName: 'Ivan',
             lastName: 'Zamyatin'
@@ -39,7 +43,7 @@ export class BoardService {
           name: 'Task 3',
           description: 'buy meat',
           isClicked: false,
-          dueDate: new Date('October 6, 2019 03:24:00').getTime(),
+          dueDate: new Date('October 6, 2019 03:24:00'),
           assignee: {
             id: 'oba',
             firstName: 'Clare',
@@ -57,7 +61,7 @@ export class BoardService {
           name: 'Task 4',
           description: 'buy milk',
           isClicked: false,
-          dueDate: this.date.setDate(this.today.getDate() + 7),
+          dueDate: this.dateStringToDate(7),
           assignee: {
             id: 'tod',
             firstName: 'John',
@@ -68,7 +72,7 @@ export class BoardService {
           name: 'Task 5',
           description: 'buy bread',
           isClicked: false,
-          dueDate: new Date('October 15, 2019 03:24:00').getTime(),
+          dueDate: new Date('October 15, 2019 03:24:00'),
           assignee: {
             id: 'richa',
             firstName: 'Liza',
@@ -79,7 +83,7 @@ export class BoardService {
           name: 'Task 6',
           description: 'buy meat',
           isClicked: false,
-          dueDate: this.date.setDate(this.today.getDate() + 10),
+          dueDate: this.dateStringToDate(10),
           assignee: {
             id: 'pola',
             firstName: 'Franc',
@@ -97,7 +101,7 @@ export class BoardService {
           name: 'Task 7',
           description: 'buy milk',
           isClicked: false,
-          dueDate: new Date('December 28, 2019 03:24:00').getTime(),
+          dueDate: new Date('December 28, 2019 03:24:00'),
           assignee: {
             id: 'ham',
             firstName: 'Kirk',
@@ -108,7 +112,7 @@ export class BoardService {
           name: 'Task 8',
           description: 'buy bread',
           isClicked: false,
-          dueDate: new Date('October 3, 2019 03:24:00').getTime(),
+          dueDate: new Date('October 3, 2019 03:24:00'),
           assignee: {
             id: 'vana',
             firstName: 'Bruce',
@@ -119,7 +123,7 @@ export class BoardService {
           name: 'Task 9',
           description: 'buy meat',
           isClicked: false,
-          dueDate: new Date('October 6, 2019 03:24:00').getTime(),
+          dueDate: new Date('October 6, 2019 03:24:00'),
           assignee: {
             id: 'def',
             firstName: 'John',
@@ -130,6 +134,12 @@ export class BoardService {
       isDoneSection: true
     }
   ];
+
+  private dateStringToDate(day) {
+    const newDate = new Date();
+    newDate.setDate(this.today.getDate() + day);
+    return newDate;
+  }
 
   public removeItem({ list, item }) {
     const itemIndex = list.findIndex(
@@ -162,5 +172,42 @@ export class BoardService {
         }
       }
     }
+  }
+
+  public onCancel() {
+    this.router.navigate(['/board-page']);
+  }
+
+  public onSaveTask(newCard) {
+    if (newCard.name) {
+      this.cardList[0].cards.push({
+        name: newCard.name,
+        description: newCard.description,
+        isClicked: false,
+        dueDate: newCard.dueDate,
+        assignee: {
+          id: newCard.assignee.id,
+          firstName: newCard.assignee.firstName,
+          lastName: newCard.assignee.lastName
+        }
+      });
+      this.router.navigate(['/board-page']);
+    }
+  }
+
+  public onEditTask() {
+    this.router.navigate(['/board-page']);
+  }
+
+  getAssignee() {
+    const arr = [];
+    this.cardList.forEach(item => {
+      item.cards.forEach(el => {
+        if (!arr.includes(el.assignee.lastName)) {
+          arr.push(el.assignee);
+        }
+      });
+    });
+    return arr;
   }
 }

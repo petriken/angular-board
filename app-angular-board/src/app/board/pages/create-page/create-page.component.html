@@ -1,1 +1,6 @@
-<app-forms [assignees]="assignees"> </app-forms>
+<app-forms
+  [assignees]="assignees"
+  (cancel)="onCancel($event)"
+  (save)="onSaveTask($event)"
+>
+</app-forms>

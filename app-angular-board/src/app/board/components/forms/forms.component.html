@@ -5,8 +5,11 @@
         <input
           type="text"
           matInput
-          placeholder="Name"
-          value="{{ card.name }}"
+          placeholder="input unique name"
+          [(ngModel)]="card.name"
+          [ngModelOptions]="{ standalone: true }"
+          name="name"
+          required
         />
       </mat-form-field>
       <mat-form-field>
@@ -14,39 +17,43 @@
           type="text"
           matInput
           placeholder="Description"
-          value="{{ card.description }}"
+          [(ngModel)]="card.description"
+          [ngModelOptions]="{ standalone: true }"
+          name="description"
         />
       </mat-form-field>
-      <mat-form-field *ngIf="assignee; else elseBlock">
-        <!-- <div > -->
-        <label>Assignee</label>
-        <mat-select>
-          <mat-option
-            *ngFor="let assignee of assignees"
-            [value]="assignee.lastName"
+      <mat-form-field *ngIf="assignees; else elseBlock">
+        <mat-label>Assignee</mat-label>
+        <mat-select
+          [(ngModel)]="card.assignee.firstName + card.assignee.lastName"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <mat-option *ngFor="let assignee of assignees"
             >{{ assignee.firstName }} {{ assignee.lastName }}
           </mat-option>
         </mat-select>
-        <!-- </div> -->
       </mat-form-field>
-      <ng-template #elseBlock
+      <!-- <ng-template #elseBlock
         ><mat-form-field>
           <input
             type="text"
             matInput
             placeholder="assignee"
-            value="{{ card.assignee.firstName }} {{ card.assignee.lastName }}"
+            [(ngModel)]="human"
+            [ngModelOptions]="{ standalone: true }"
+            name="assignee"
           /> </mat-form-field
-      ></ng-template>
+      ></ng-template> -->
       <mat-form-field>
         <input
           matInput
           [matDatepicker]="picker"
           placeholder="Choose a date"
-          value="bla-bla"
+          [(ngModel)]="card.dueDate"
+          [ngModelOptions]="{ standalone: true }"
+          name="card.dueDate"
         />
         <mat-datepicker-toggle matSuffix [for]="picker">
-          <!-- {{ card.dueDate }} -->
         </mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -57,8 +64,8 @@
           'margin-top': '1rem'
         }"
       >
-        <button mat-raised-button>Save</button>
-        <button mat-raised-button>Cancel</button>
+        <button mat-raised-button (click)="onSaveTask()">Save</button>
+        <button mat-raised-button (click)="onCancel()">Cancel</button>
       </div>
     </mat-card>
   </form>
