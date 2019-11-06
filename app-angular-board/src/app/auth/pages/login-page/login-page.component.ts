@@ -7,15 +7,11 @@ import { Router } from '@angular/router';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
   public login: string;
   public password: string;
 
-
   constructor(private authService: AuthService, private router: Router) { }
-
-  ngOnInit() {
-  }
 
   onLogin() {
     this.authService.onLogin(this.login, this.password);

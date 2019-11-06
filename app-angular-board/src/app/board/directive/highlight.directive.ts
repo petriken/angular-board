@@ -1,7 +1,6 @@
 import {
   Directive,
   ElementRef,
-  Renderer2,
   Input,
   OnChanges
 } from '@angular/core';

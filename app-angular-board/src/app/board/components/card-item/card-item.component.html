@@ -5,7 +5,9 @@
   [isDone]="isDone"
 >
   <div [ngClass]="{ isDone: isDone }">
-    <p>{{ item.name }}</p>
+    <p>
+      <b>{{ item.name }}</b>
+    </p>
     <ng-container *ngIf="item.isClicked">
       <p>{{ item.description }}</p>
       <p>{{ item.dueDate | date: "medium" }}</p>

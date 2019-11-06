@@ -25,25 +25,15 @@
       <mat-form-field *ngIf="assignees; else elseBlock">
         <mat-label>Assignee</mat-label>
         <mat-select
-          [(ngModel)]="card.assignee.firstName + card.assignee.lastName"
-          [ngModelOptions]="{ standalone: true }"
+          [value]="card.assignee.id"
+          (selectionChange)="handleChange($event)"
         >
-          <mat-option *ngFor="let assignee of assignees"
+          <mat-option *ngFor="let assignee of assignees" [value]="assignee.id"
             >{{ assignee.firstName }} {{ assignee.lastName }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <!-- <ng-template #elseBlock
-        ><mat-form-field>
-          <input
-            type="text"
-            matInput
-            placeholder="assignee"
-            [(ngModel)]="human"
-            [ngModelOptions]="{ standalone: true }"
-            name="assignee"
-          /> </mat-form-field
-      ></ng-template> -->
+
       <mat-form-field>
         <input
           matInput

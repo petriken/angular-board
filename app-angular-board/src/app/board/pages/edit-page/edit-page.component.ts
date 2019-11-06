@@ -17,8 +17,7 @@ export class EditPageComponent implements OnInit {
 
   ngOnInit() {
     this.assignees = this.boardService.getAssignee();
-
-    this.card = this.boardService.getTaskByName(this.route.snapshot.params[' name']);
+    this.card = this.boardService.getTaskByName(+this.route.snapshot.params.id);
   }
 
   onCancel() {

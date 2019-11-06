@@ -12,5 +12,7 @@
     (create)="onCreateCard($event)"
   >
   </app-card-item>
-  <button mat-button (click)="onCreateCard()">+ Create card</button>
+  <button *ngIf="card.name === 'Backlog'" mat-button (click)="onCreateCard()">
+    + Create card
+  </button>
 </mat-card>

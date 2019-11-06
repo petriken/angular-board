@@ -6,14 +6,9 @@ import { EditPageComponent } from './pages/edit-page/edit-page.component';
 
 
 const routes: Routes = [
-  {
-    path: '', component: BoardPageComponent,
-    // children: [{
-    //   path: 'create-page', component: CreatePageComponent
-    // }]
-  },
+  { path: '', component: BoardPageComponent },
   { path: 'create-page', component: CreatePageComponent },
-  { path: 'edit-page/: name', component: EditPageComponent }
+  { path: 'edit-page/:id', component: EditPageComponent }
 ];
 
 @NgModule({

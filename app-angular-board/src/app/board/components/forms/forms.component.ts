@@ -2,22 +2,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import User from '../../models/User';
 import Card from '../../models/Card';
 import CardList from '../../models/CardList';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.scss']
 })
-
 export class FormsComponent implements OnInit {
   public name: string;
   public description: string;
   public human: string;
   public date: Date;
   public assignee: User;
-  // private newCard: boolean;
 
-  @Input() assignees?: CardList;
+  public fullAssigneeName = '';
+
+  @Input() assignees?: User[];
   @Input() card?: Card;
   @Input() cards: CardList;
   @Output() public cancel = new EventEmitter<Event>();
@@ -25,7 +26,6 @@ export class FormsComponent implements OnInit {
 
   ngOnInit() {
     if (!this.card) {
-      // this.newCard = true;
       this.card = {
         name: '',
         description: '',
@@ -33,10 +33,12 @@ export class FormsComponent implements OnInit {
         assignee: {
           id: '',
           firstName: '',
-          lastName: '',
+          lastName: ''
         },
         dueDate: ''
       };
+    } else {
+      this.fullAssigneeName = `${this.card.assignee.firstName} ${this.card.assignee.lastName}`;
     }
   }
 
@@ -44,28 +46,20 @@ export class FormsComponent implements OnInit {
     this.cancel.emit();
   }
 
+  handleChange(event: MatSelectChange) {
+    const id = event.value;
+    if (id) {
+      this.assignees.map(value => {
+        if (value.id === id) {
+          this.card.assignee.firstName = value.firstName;
+          this.card.assignee.lastName = value.lastName;
+          this.card.assignee.id = id;
+        }
+      });
+    }
+  }
+
   onSaveTask() {
-    console.log('card', this.card);
-
-    // if (this.newCard) {
-
-    // this.save.emit({
-    //   name: this.card.name,
-    //   description: this.description,
-    //   assignee: {
-    //     // id: this.assignee.id,
-    //     // firstName: this.assignee.firstName,
-    //     // lastName: this.assignee.lastName
-    //     id: this.human.split(' ')[1].slice(0, 3),
-    //     firstName: this.human.split(' ')[0],
-    //     lastName: this.human.split(' ')[1]
-    //   },
-    //   dueDate: this.card.dueDate
-    // });
-    // }
-    // else {
-    this.save.emit(this.card
-    );
-    // }
+    this.save.emit(this.card);
   }
 }

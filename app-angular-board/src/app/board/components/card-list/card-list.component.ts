@@ -38,8 +38,6 @@ export class CardListComponent {
 
   onCreateCard() {
     this.create.emit();
-
-    // this.router.navigate(['board-page', 'create-page']);
   }
 
   onEdit(item: Card) {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Card from '../models/Card';
 import { Router } from '@angular/router';
+import CardList from '../models/CardList';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class BoardService {
       name: 'Backlog',
       cards: [
         {
+          id: 1,
           name: 'Task 1',
           description: 'buy milk',
           isClicked: true,
@@ -29,6 +31,7 @@ export class BoardService {
           }
         },
         {
+          id: 2,
           name: 'Task 2',
           description: 'buy bread',
           isClicked: false,
@@ -40,6 +43,7 @@ export class BoardService {
           }
         },
         {
+          id: 3,
           name: 'Task 3',
           description: 'buy meat',
           isClicked: false,
@@ -58,6 +62,7 @@ export class BoardService {
       name: 'In progress',
       cards: [
         {
+          id: 4,
           name: 'Task 4',
           description: 'buy milk',
           isClicked: false,
@@ -69,6 +74,7 @@ export class BoardService {
           }
         },
         {
+          id: 5,
           name: 'Task 5',
           description: 'buy bread',
           isClicked: false,
@@ -80,6 +86,7 @@ export class BoardService {
           }
         },
         {
+          id: 6,
           name: 'Task 6',
           description: 'buy meat',
           isClicked: false,
@@ -94,10 +101,11 @@ export class BoardService {
       isDoneSection: false
     },
     {
-      id: 1,
+      id: 3,
       name: 'Done',
       cards: [
         {
+          id: 7,
           name: 'Task 7',
           description: 'buy milk',
           isClicked: false,
@@ -109,6 +117,7 @@ export class BoardService {
           }
         },
         {
+          id: 8,
           name: 'Task 8',
           description: 'buy bread',
           isClicked: false,
@@ -120,6 +129,7 @@ export class BoardService {
           }
         },
         {
+          id: 9,
           name: 'Task 9',
           description: 'buy meat',
           isClicked: false,
@@ -133,6 +143,18 @@ export class BoardService {
       ],
       isDoneSection: true
     }
+  ];
+
+  assigneesArray = [
+    { id: 'vik', firstName: 'Viktor', lastName: 'Pupkin' },
+    { id: 'zama', firstName: 'Ivan', lastName: 'Zamyatin' },
+    { id: 'oba', firstName: 'Clare', lastName: 'Obignale' },
+    { id: 'tod', firstName: 'John', lastName: 'Todessky' },
+    { id: 'richa', firstName: 'Liza', lastName: 'Richie' },
+    { id: 'pola', firstName: 'Franc', lastName: 'Polanski' },
+    { id: 'ham', firstName: 'Kirk', lastName: 'Hammet' },
+    { id: 'vana', firstName: 'Bruce', lastName: 'Waine' },
+    { id: 'def', firstName: 'John', lastName: 'Doe' }
   ];
 
   private dateStringToDate(day) {
@@ -163,11 +185,10 @@ export class BoardService {
     ].cards[itemIndex].isClicked;
   }
 
-  public getTaskByName(name: string) {
+  public getTaskByName(id: number) {
     for (const card of this.cardList) {
       for (const item of card.cards) {
-        if (item.name === name) {
-          console.log(item);
+        if (item.id === id) {
           return item;
         }
       }
@@ -178,9 +199,34 @@ export class BoardService {
     this.router.navigate(['/board-page']);
   }
 
+  public checkTaskName(name: string) {
+    for (const card of this.cardList) {
+      for (const item of card.cards) {
+        if (item.name === name) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  private amountTask() {
+    let count = 0;
+    this.cardList.forEach(
+      (item) => {
+        item.cards.forEach(() => { count += 1; }
+        );
+      }
+    );
+    return count;
+  }
+
   public onSaveTask(newCard) {
-    if (newCard.name) {
+
+
+    if (this.checkTaskName(newCard.name) && newCard.name) {
       this.cardList[0].cards.push({
+        id: this.amountTask() + 1,
         name: newCard.name,
         description: newCard.description,
         isClicked: false,
@@ -200,14 +246,6 @@ export class BoardService {
   }
 
   getAssignee() {
-    const arr = [];
-    this.cardList.forEach(item => {
-      item.cards.forEach(el => {
-        if (!arr.includes(el.assignee.lastName)) {
-          arr.push(el.assignee);
-        }
-      });
-    });
-    return arr;
+    return this.assigneesArray;
   }
 }

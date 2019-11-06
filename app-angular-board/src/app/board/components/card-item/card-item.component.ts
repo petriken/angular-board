@@ -30,8 +30,6 @@ export class CardItemComponent {
 
   public onEdit(event: MouseEvent) {
     event.stopPropagation();
-    // this.router.navigate(['board-page', 'edit-page']);
     this.edit.emit(this.item);
-
   }
 }

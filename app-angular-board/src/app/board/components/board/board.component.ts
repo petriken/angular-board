@@ -30,7 +30,7 @@ export class BoardComponent implements OnInit {
   }
 
   public onEdit(item: Card) {
-    this.router.navigate(['edit-page', item.name], { relativeTo: this.route });
+    this.router.navigate(['edit-page', item.id], { relativeTo: this.route });
   }
 
   public onCreateCard() {
